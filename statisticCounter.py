@@ -1,5 +1,6 @@
 import sys
 import time
+import numpy as np
 from multiprocessing.dummy import Pool
 
 def getFilePath():
@@ -10,11 +11,10 @@ def getFilePath():
     return file_path
 
 def readNumbers(file_path):
-    pool = Pool(8)
+    pool = Pool(4)
     with open(file_path) as f:
         numbers = pool.map(float,f)
         pool.close()
-        pool.join()
         return numbers
 
 def findMaxNumber(numbers):
@@ -27,11 +27,7 @@ def findAvarage(numbers):
     return sum(numbers)/len(numbers)
 
 def findMedian(numbers):
-    if len(numbers)%2 != 0:
-        return sorted(numbers)[len(numbers)/2]
-    else:
-        median = (sorted(numbers)[len(numbers)/2] + sorted(numbers)[len(numbers)/2-1])/2.0
-        return median
+    return np.median(numbers)
 
 def execFindFunctions(numbers):
     print "Maximal number is: %s" % (findMaxNumber(numbers))
@@ -40,8 +36,8 @@ def execFindFunctions(numbers):
     print "Median of list is: %s" % (findMedian(numbers))
 
 if __name__ == "__main__":
-    file_path = getFilePath()
     t = time.time()
+    file_path = getFilePath()
     numbers = readNumbers(file_path)
     execFindFunctions(numbers)
     t = time.time() - t
