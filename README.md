@@ -1,2 +1,2 @@
-# statisticCounter. To use it download python2.7
-line number 2
+# Instruction
+download python2.7
