@@ -30,8 +30,8 @@ def findMedian(numbers):
     if len(numbers)%2 != 0:
         return sorted(numbers)[len(numbers)/2]
     else:
-        midavg = (sorted(numbers)[len(numbers)/2] + sorted(numbers)[len(numbers)/2-1])/2.0
-        return midavg
+        median = (sorted(numbers)[len(numbers)/2] + sorted(numbers)[len(numbers)/2-1])/2.0
+        return median
 
 def execFindFunctions(numbers):
     print "Maximal number is: %s" % (findMaxNumber(numbers))
